@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatDialogFragment
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import com.example.myapplication.R
 import com.example.myapplication.api.models.Jog.Jog
 
@@ -39,8 +41,12 @@ class EditItemDialog(currentJog: Jog, editItemInterface: EditItemInterface) : Ap
             .setNeutralButton("Delete"){_, _ ->
                 editItemInterface.deleteJog?.invoke(jog)
             }
-        editDistance = view.findViewById(R.id.text_input_distance)
         editTime = view.findViewById(R.id.text_input_time)
+        editDistance = view.findViewById(R.id.text_input_distance)
+
+        editTime?.editText?.text = Editable.Factory.getInstance().newEditable(jog.time.toString())
+        editDistance?.editText?.text = Editable.Factory.getInstance().newEditable(jog.distance.toString())
+
         return builder.create()
     }
 }
@@ -49,3 +55,5 @@ interface EditItemInterface {
     var deleteJog: ((Jog) -> Unit)?
 
 }
+
+fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)

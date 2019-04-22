@@ -14,7 +14,7 @@
         <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Distance"
+                android:hint="Distance (m)"
                 android:inputType="number"
         >
 
@@ -29,7 +29,7 @@
         <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Time"
+                android:hint="Time (s)"
                 android:inputType="number">
 
         </android.support.design.widget.TextInputEditText>

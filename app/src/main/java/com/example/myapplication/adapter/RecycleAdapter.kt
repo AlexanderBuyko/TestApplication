@@ -80,12 +80,12 @@ class RecyclerViewHolder : RecyclerView.ViewHolder, View.OnClickListener {
     }
 
     fun bind(modelItem: Jog) {
-        distance.setText("Distance: ".plus(modelItem.distance.toString()).plus(" km"))
-        var currentTime = (modelItem.time.toDouble() * 100 / (60)).toInt().toDouble() / 100
-        time.setText("Time: ".plus(currentTime.toString()).plus(" min"))
+        distance.setText("Distance: ".plus(modelItem.distance.toString()).plus(" m"))
+        var currentTime = modelItem.time
+        time.setText("Time: ".plus(currentTime.toString()).plus(" s"))
         val dateStr = if (modelItem.date.contains("-")) modelItem.date else Date(modelItem.date.toLong() * 1000).toString()
         date.setText("Date: ".plus(dateStr))
-        val currentSpeed = ((modelItem.distance * 1000) / (currentTime * 60)).toInt()
+        val currentSpeed = ((modelItem.distance / currentTime.toDouble()) * 100).toInt().toDouble() / 100
         speed.setText("Speed: ".plus(currentSpeed).plus(" m/s"))
     }
 
